@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UaiTrampo - Oportunidades</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; }
+
+        /* ── NAVBAR ── */
+        .navbar-uai {
+            background: #fff;
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .navbar-brand-uai {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .navbar-brand-uai span {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        .brand-uai  { color: #1a9cd4; }
+        .brand-trampo { color: #222; }
+        .navbar-nav-uai { display: flex; gap: 10px; align-items: center; }
+        .btn-nav-outline {
+            border: 2px solid #1a9cd4;
+            color: #1a9cd4;
+            background: transparent;
+            border-radius: 6px;
+            padding: 6px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-nav-outline:hover { background: #1a9cd4; color: #fff; text-decoration: none; }
+        .btn-nav-green {
+            background: #28c76f;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-nav-green:hover { background: #22a85f; color: #fff; text-decoration: none; }
+        .btn-nav-blue {
+            background: #1a9cd4;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 7px 20px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-nav-blue:hover { background: #1580ad; color: #fff; text-decoration: none; }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(135deg, #1a9cd4 0%, #0d7fb5 40%, #0e9e72 100%);
+            padding: 50px 20px 60px;
+            text-align: center;
+        }
+        .hero h2 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            max-width: 750px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .search-bar input, .search-bar select {
+            flex: 1;
+            border: none;
+            padding: 14px 18px;
+            font-size: 1rem;
+            outline: none;
+            border-right: 1px solid #ddd;
+        }
+        .search-bar select { flex: 0.6; }
+        .search-bar .btn-buscar {
+            background: #28c76f;
+            color: #fff;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-bar .btn-buscar:hover { background: #22a85f; }
+
+        /* ── FILTROS EXTRAS ── */
+        .filtros-bar {
+            background: #fff;
+            padding: 14px 30px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .filtros-bar select {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            background: #fff;
+        }
+        .filtros-bar label { font-weight: 600; color: #555; margin: 0; font-size: 0.9rem; }
+
+        /* ── CONTEÚDO ── */
+        .content-area {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .results-header h4 { color: #333; font-weight: 700; }
+        .btn-cadastrar {
+            background: #1a9cd4;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 9px 22px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-cadastrar:hover { background: #1580ad; color: #fff; text-decoration: none; }
+
+        /* ── CARDS ── */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .vaga-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 22px 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            border-left: 4px solid #1a9cd4;
+        }
+        .vaga-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26,156,212,0.18);
+        }
+        .vaga-card h5 { color: #222; font-weight: 700; font-size: 1.05rem; margin-bottom: 4px; }
+        .vaga-card .empresa { color: #1a9cd4; font-weight: 600; font-size: 0.92rem; margin-bottom: 10px; }
+        .vaga-card .descricao { color: #666; font-size: 0.88rem; margin-bottom: 14px; line-height: 1.5; }
+        .vaga-card .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .badge-tipo {
+            background: #e8f4fd;
+            color: #1a9cd4;
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .badge-area {
+            background: #e8fdf0;
+            color: #28c76f;
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+        .vaga-card .rodape {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.82rem;
+            color: #999;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 10px;
+        }
+        .vaga-card .salario { color: #28a745; font-weight: 700; font-size: 0.92rem; }
+        .sem-resultados {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: #aaa;
+            padding: 40px;
+            font-size: 1rem;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 18px;
+            font-size: 0.82rem;
+            color: #aaa;
+            background: #fff;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar-uai">
+        <a class="navbar-brand-uai" href="lista_oportunidades.html">
+            <!-- Logo UaiTrampo SVG -->
+            <svg width="42" height="42" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" rx="18" fill="#111"/>
+                <path d="M 28 130 Q 100 18 172 130" stroke="white" stroke-width="11" fill="none" stroke-linecap="round"/>
+                <polyline points="18,155 58,95 95,128 130,78 182,155"
+                    stroke="white" stroke-width="10" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                <polyline points="28,172 58,135 95,155 130,118 172,172"
+                    stroke="#e74c3c" stroke-width="9" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                <polyline points="40,185 62,158 95,172 128,148 160,185"
+                    stroke="#e74c3c" stroke-width="7" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                <circle cx="122" cy="88" r="24" fill="#29b6f6"/>
+                <circle cx="122" cy="88" r="16" fill="#111"/>
+                <line x1="139" y1="105" x2="158" y2="124" stroke="#29b6f6" stroke-width="11" stroke-linecap="round"/>
+                <rect x="114" y="80" width="16" height="14" rx="2" fill="white" opacity="0.85"/>
+                <line x1="117" y1="84" x2="127" y2="84" stroke="#111" stroke-width="1.8"/>
+                <line x1="117" y1="87" x2="127" y2="87" stroke="#111" stroke-width="1.8"/>
+                <line x1="117" y1="90" x2="123" y2="90" stroke="#111" stroke-width="1.8"/>
+            </svg>
+            <span><span class="brand-uai">Uai</span><span class="brand-trampo">Trampo</span></span>
+        </a>
+        <div class="navbar-nav-uai">
+            <a class="btn-nav-blue" href="#">Empresas</a>
+            <a class="btn-nav-outline" href="#">Candidatos</a>
+            <a class="btn-nav-green" href="#">Cadastre-se</a>
+            <a class="btn-nav-outline" href="index.html">Gerenciar Vagas</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h2>Encontre a vaga ideal para você</h2>
+        <div class="search-bar">
+            <input type="text" id="filtro_titulo" placeholder="Cargo, empresa ou palavra-chave..." oninput="listaOportunidades()">
+            <input type="text" id="filtro_cidade" placeholder="Cidade ou estado..." oninput="listaOportunidades()" style="border-right:none;">
+            <button class="btn-buscar" onclick="listaOportunidades()">Buscar</button>
+        </div>
+    </section>
+
+    <!-- FILTROS EXTRAS -->
+    <div class="filtros-bar">
+        <label>Filtrar por:</label>
+        <select id="filtro_area" onchange="listaOportunidades()">
+            <option value="">Todas as Áreas</option>
+            <option value="tecnologia">Tecnologia</option>
+            <option value="marketing">Marketing</option>
+            <option value="rh">Recursos Humanos</option>
+            <option value="financeiro">Financeiro</option>
+            <option value="administrativo">Administrativo</option>
+            <option value="vendas">Vendas</option>
+        </select>
+        <select id="filtro_tipo" onchange="listaOportunidades()">
+            <option value="">Todos os Tipos</option>
+            <option value="CLT">CLT</option>
+            <option value="PJ">PJ</option>
+            <option value="Estágio">Estágio</option>
+            <option value="Freelancer">Freelancer</option>
+        </select>
+    </div>
+
+    <!-- CONTEÚDO -->
+    <div class="content-area">
+        <div class="results-header">
+            <h4 id="total-vagas">Carregando vagas...</h4>
+            <a href="index.html" class="btn-cadastrar">+ Cadastrar Vaga</a>
+        </div>
+        <div class="cards-grid" id="cards-oportunidades">
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>© 2026 UaiTrampo. Todos os direitos reservados.</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        function listaOportunidades() {
+            let oportunidades = db.oportunidades;
+
+            let filtroTitulo = document.getElementById('filtro_titulo').value.toLowerCase();
+            let filtroCidade = document.getElementById('filtro_cidade').value.toLowerCase();
+            let filtroArea   = document.getElementById('filtro_area').value;
+            let filtroTipo   = document.getElementById('filtro_tipo').value;
+
+            let resultado = oportunidades.filter(op => {
+                let bateTitulo = filtroTitulo === '' || op.titulo.toLowerCase().includes(filtroTitulo) || op.empresa.toLowerCase().includes(filtroTitulo);
+                let bateCidade = filtroCidade === '' || op.cidade.toLowerCase().includes(filtroCidade);
+                let bateArea   = filtroArea   === '' || op.area === filtroArea;
+                let bateTipo   = filtroTipo   === '' || op.tipo === filtroTipo;
+                return bateTitulo && bateCidade && bateArea && bateTipo;
+            });
+
+            let total = resultado.length;
+            $("#total-vagas").text(total + (total === 1 ? ' vaga encontrada' : ' vagas encontradas'));
+            $("#cards-oportunidades").empty();
+
+            if (total === 0) {
+                $("#cards-oportunidades").append('<p class="sem-resultados">Nenhuma vaga encontrada para os filtros selecionados.</p>');
+                return;
+            }
+
+            resultado.forEach(op => {
+                let dataFormatada = op.data_encerramento ? 'Encerra em ' + op.data_encerramento : '';
+                $("#cards-oportunidades").append(`
+                    <div class="vaga-card">
+                        <h5>${op.titulo}</h5>
+                        <div class="empresa">🏢 ${op.empresa} — ${op.cidade}</div>
+                        <div class="descricao">${op.descricao}</div>
+                        <div class="badges">
+                            <span class="badge-tipo">${op.tipo}</span>
+                            <span class="badge-area">${op.area}</span>
+                        </div>
+                        <div class="rodape">
+                            <span class="salario">${op.salario || 'Salário a combinar'}</span>
+                            <span>${dataFormatada}</span>
+                        </div>
+                    </div>`);
+            });
+        }
+
+        window.onload = () => listaOportunidades();
+    </script>
+</body>
+
+</html>
