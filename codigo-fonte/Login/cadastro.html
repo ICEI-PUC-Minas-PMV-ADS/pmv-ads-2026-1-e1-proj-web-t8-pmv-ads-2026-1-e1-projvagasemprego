@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UaiTrampo - Cadastro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Formulário de cadastro tem mais campos, então aumenta a altura do card */
+        .contain {
+            height: auto;
+            min-height: 520px;
+        }
+        .login {
+            padding: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contain">
+            <div class="baner">
+                <div class="banerInfos">
+                    <img src="../../documentos/img/briefcase.png" alt="">
+                    <h1>Comece sua jornada agora</h1>
+                    <p>Crie sua conta e acesse vagas e talentos em um só lugar.</p>
+                </div>
+            </div>
+            <div class="login">
+                <div class="loginInfos">
+                    <h1>Criar conta</h1>
+                    <p>Preencha os dados abaixo para se cadastrar</p>
+                    <form action="" id="cadastro-form">
+                        <div class="input-wrapper">
+                            <label for="inputNome">Nome completo</label>
+                            <input type="text" id="inputNome" placeholder="Seu nome completo">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="inputEmailCad">Email</label>
+                            <input type="email" id="inputEmailCad" placeholder="Seu@mail.com">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="inputSenhaCad">Senha</label>
+                            <input type="password" id="inputSenhaCad" placeholder="Mínimo 4 caracteres">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="inputConfirmaSenha">Confirmar senha</label>
+                            <input type="password" id="inputConfirmaSenha" placeholder="Repita a senha">
+                        </div>
+                        <button type="submit">Cadastrar</button>
+                        <div class="form-footer">
+                            Já tem conta? <a href="index.html">Faça login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
