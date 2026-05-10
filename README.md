@@ -42,7 +42,7 @@ Esta plataforma centraliza o recrutamento em cidades de pequeno porte, conectand
 
 # Hospedagem
 
-A aplicação em HTML/CSS/JS é um projeto que pode ser utilizado tanto em servidores como em navegadores web.
+A aplicação em HTML/CSS/JS está disponível para ser acessado <a href="https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/codigo-fonte/Login/Index.html">aqui</a>.
 
 # Código-Fonte
 
