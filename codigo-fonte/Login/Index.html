@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UaiTrampo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../../documentos/img/logo.png">
 </head>
+
 <body>
     <div class="container">
         <div class="contain">
             <div class="baner">
-            
+
                 <div class="banerInfos">
-                    <img src="../../documentos/img/briefcase.png" alt="">
+                    <img src="../../documentos/img/logo.png" alt="">
                     <h1>Encontre sua próxima oportunidade</h1>
-                    <p>Gerencie candidaturas, vagas e talentos em um só lugar.          </p>
+                    <p>Gerencie candidaturas, vagas e talentos em um só lugar.</p>
                 </div>
             </div>
             <div class="login">
                 <div class="loginInfos">
                     <h1>Bem vindo de volta!</h1>
                     <p>Faça login para acessar sua conta</p>
-                    <form action="" id="login-form"> 
+                    <form action="" id="login-form">
                         <div class="input-wrapper">
                             <label for="">Email</label>
-                            <input type="email" name="" id="" placeholder="Seu@mail.com">
+                            <input type="email" name="" id="inputBtt" placeholder="Seu@mail.com">
                         </div>
                         <div class="input-wrapper">
                             <label for="">Senha</label>
-                            <input type="password" name="" id="" placeholder="*****">
+                            <input type="password" name="" id="inputPass" placeholder="*****">
                         </div>
 
                         <div class="forgot-pass">
-                            <a href="#">Esqueceu a senha?</a>
+                            <a href="../redefinir-senha/index.html">Esqueceu a senha?</a>
                         </div>
-                        <button>Entrar</button>
+                        <button type="button" onclick="Login()">Entrar</button>
                         <div class="form-footer">
-                            Não tem conta? <a href="#">Cadastre-se</a>
+                            Não tem conta? <a href="cadastro.html">Cadastre-se</a>
                         </div>
                     </form>
-
-
                 </div>
-
             </div>
-        </div>          
+        </div>
     </div>
-
+    <script src="login.js"></script>
 </body>
+
 </html>

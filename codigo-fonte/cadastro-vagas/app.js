@@ -1,5 +1,4 @@
-// Dados iniciais de oportunidades
-var db_oportunidades_inicial = {
+let db_oportunidades_inicial = {
     "oportunidades": [
         {
             "id": 1,
@@ -37,20 +36,19 @@ var db_oportunidades_inicial = {
     ]
 }
 
-// Carrega do localStorage ou usa dados iniciais
-var db = JSON.parse(localStorage.getItem('db_oportunidade'));
+let db = JSON.parse(localStorage.getItem('db_oportunidade'))
 if (!db) {
-    db = db_oportunidades_inicial;
+    db = db_oportunidades_inicial
 }
 
 function displayMessage(msg) {
-    $('#msg').html('<div class="alert alert-warning">' + msg + '</div>');
+    $('#msg').html('<div class="alert alert-warning">' + msg + '</div>')
 }
 
 function insertOportunidade(oportunidade) {
-    let novoId = 1;
+    let novoId = 1
     if (db.oportunidades.length != 0)
-        novoId = db.oportunidades[db.oportunidades.length - 1].id + 1;
+        novoId = db.oportunidades[db.oportunidades.length - 1].id + 1
 
     let novaOportunidade = {
         "id": novoId,
@@ -62,31 +60,31 @@ function insertOportunidade(oportunidade) {
         "tipo": oportunidade.tipo,
         "descricao": oportunidade.descricao,
         "data_encerramento": oportunidade.data_encerramento
-    };
+    }
 
     db.oportunidades.push(novaOportunidade);
-    displayMessage("Oportunidade inserida com sucesso!");
-    localStorage.setItem('db_oportunidade', JSON.stringify(db));
+    displayMessage("Oportunidade inserida com sucesso!")
+    localStorage.setItem('db_oportunidade', JSON.stringify(db))
 }
 
 function updateOportunidade(id, oportunidade) {
-    let index = db.oportunidades.map(obj => obj.id).indexOf(id);
+    let index = db.oportunidades.map(obj => obj.id).indexOf(id)
 
-    db.oportunidades[index].titulo = oportunidade.titulo;
-    db.oportunidades[index].empresa = oportunidade.empresa;
+    db.oportunidades[index].titulo = oportunidade.titulo
+    db.oportunidades[index].empresa = oportunidade.empresa
     db.oportunidades[index].area = oportunidade.area;
-    db.oportunidades[index].cidade = oportunidade.cidade;
-    db.oportunidades[index].salario = oportunidade.salario;
+    db.oportunidades[index].cidade = oportunidade.cidade
+    db.oportunidades[index].salario = oportunidade.salario
     db.oportunidades[index].tipo = oportunidade.tipo;
-    db.oportunidades[index].descricao = oportunidade.descricao;
-    db.oportunidades[index].data_encerramento = oportunidade.data_encerramento;
+    db.oportunidades[index].descricao = oportunidade.descricao
+    db.oportunidades[index].data_encerramento = oportunidade.data_encerramento
 
-    displayMessage("Oportunidade alterada com sucesso!");
-    localStorage.setItem('db_oportunidade', JSON.stringify(db));
+    displayMessage("Oportunidade alterada com sucesso!")
+    localStorage.setItem('db_oportunidade', JSON.stringify(db))
 }
 
 function deleteOportunidade(id) {
-    db.oportunidades = db.oportunidades.filter(function (element) { return element.id != id });
-    displayMessage("Oportunidade removida com sucesso!");
-    localStorage.setItem('db_oportunidade', JSON.stringify(db));
+    db.oportunidades = db.oportunidades.filter(function (element) { return element.id != id })
+    displayMessage("Oportunidade removida com sucesso!")
+    localStorage.setItem('db_oportunidade', JSON.stringify(db))
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UaiTrampo - Nova Senha</title>
+    <link rel="icon" type="image/png" href="../../documentos/img/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="contain">
+            <div class="baner">
+                <div class="banerInfos">
+                    <img src="../../documentos/img/logo.png" alt="Logo">
+                    <h1>Sua conta mais segura</h1>
+                    <p>Crie uma senha forte para garantir a proteção dos seus dados.</p>
+                </div>
+            </div>
+
+            <div class="login">
+                <div class="loginInfos">
+                    <h1>Nova Senha</h1>
+                    <p>Digite e confirme sua nova senha abaixo</p>
+
+                    <form id="reset-form">
+                        <div class="input-wrapper">
+                            <label for="newPass">E-mail</label>
+                            <input type="email" id="email" placeholder="seu@email.com">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="newPass">Nova Senha</label>
+                            <input type="password" id="newPass" placeholder="*****">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <label for="confirmPass">Confirmar Senha</label>
+                            <input type="password" id="confirmPass" placeholder="*****">
+                        </div>
+
+                        <button type="button" onclick="updatePassword(event)">Alterar Senha</button>
+
+                        <div class="form-footer">
+                            Lembrou a senha? <a href="../Login/Index.html">Fazer login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="reset.js"></script>
+</body>
+
+</html>
