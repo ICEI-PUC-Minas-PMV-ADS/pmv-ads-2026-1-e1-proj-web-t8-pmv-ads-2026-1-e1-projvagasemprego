@@ -71,13 +71,13 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 
 | AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
-| Repositório de código fonte         | GitHub                             | https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/blob/main/README.md                            |
-| Documentos do projeto               | GitHub                             | https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/tree/main/documentos                            |
-| Projeto de Interface                | Figma                              | https://www.figma.com/proto/1dBBqPq8djNa9oXVVxEEX0/VagasEmprego?node-id=1-2&p=f&t=ahcXiJF0OrH3Zvoe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1                            |
-| Gerenciamento do Projeto            | GitHub Projects                    | http://....                            |
-| Hospedagem                          | GitHub Pages                       | http://....                            |
+| Repositório de código fonte         | GitHub                             | https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/blob/main/README.md |
+| Documentos do projeto               | GitHub                             | https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/tree/main/documentos |
+| Projeto de Interface                | Figma                              | https://www.figma.com/proto/1dBBqPq8djNa9oXVVxEEX0/VagasEmprego?node-id=1-2&p=f&t=ahcXiJF0OrH3Zvoe-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1 |
+| Gerenciamento do Projeto            | GitHub Projects                    | https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/2894 |
+| Hospedagem                          | GitHub Pages                       | https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/ |
 
 
 ### Estratégia de Organização de Codificação 
 
-Todos os artefatos relacionados a implementação e visualização dos conteúdos do projeto do site são inseridos na pasta [codigo-fonte](https://github.com/ICEI-PUC-Minas-PMV-ADS/WebApplicationProject-Template-v2/tree/main/codigo-fonte). [Consulte a nossa sugestão referente a estratégia de organização de codificação a ser adotada pela equipe de desenvolvimento do projeto.]
+Todos os artefatos relacionados a implementação e visualização dos conteúdos do projeto do site são inseridos na pasta [codigo-fonte](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego/tree/main/codigo-fonte).
