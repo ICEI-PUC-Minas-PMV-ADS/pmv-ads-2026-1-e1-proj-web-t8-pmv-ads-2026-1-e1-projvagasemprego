@@ -28,5 +28,5 @@ function updateDBPass(newPass, email) {
 
     localStorage.setItem("db_usuarios", JSON.stringify(dados))
 
-    window.location.replace("../Login/index.html")
+    window.location.replace("../login/index.html")
 }
