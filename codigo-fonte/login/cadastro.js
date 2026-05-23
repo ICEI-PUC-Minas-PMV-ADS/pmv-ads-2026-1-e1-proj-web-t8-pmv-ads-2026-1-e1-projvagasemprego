@@ -24,8 +24,8 @@ function generateUUID() {
 
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID(), "nome": "Administrador", "email": "admin@uaitrampo.com", "senha": "123" },
-        { "id": generateUUID(), "nome": "Candidato Teste", "email": "candidato@uaitrampo.com", "senha": "123" }
+        { "id": generateUUID(), "nome": "Administrador", "email": "admin@uaitrampo.com", "senha": "123", "empresa": true },
+        { "id": generateUUID(), "nome": "Candidato Teste", "email": "candidato@uaitrampo.com", "senha": "123", "empresa": false }
     ]
 }
 
@@ -47,13 +47,14 @@ function initLoginApp() {
 
 
 function loginUser(email, senha) {
-    for (var i = 0; i < db_usuarios.usuarios.length; i++) {
-        var usuario = db_usuarios.usuarios[i]
+    for (let i = 0; i < db_usuarios.usuarios.length; i++) {
+        let usuario = db_usuarios.usuarios[i]
 
         if (email === usuario.email && senha === usuario.senha) {
             usuarioCorrente.id    = usuario.id
             usuarioCorrente.nome  = usuario.nome
             usuarioCorrente.email = usuario.email
+
 
             sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente))
             return true
@@ -62,35 +63,39 @@ function loginUser(email, senha) {
     return false
 }
 
+
 function logoutUser() {
     usuarioCorrente = {}
     sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioCorrente))
     window.location.href = LOGIN_URL
 }
 
-function addUser(nome, email, senha) {
+
+function addUser(nome, email, senha, empresa) {
     var novoUsuario = {
         "id": generateUUID(),
         "nome": nome,
         "email": email,
-        "senha": senha
+        "senha": senha,
+        "empresa": empresa
     }
     db_usuarios.usuarios.push(novoUsuario)
     localStorage.setItem('db_usuarios', JSON.stringify(db_usuarios))
 }
 
+
 function processaFormLogin(event) {
     event.preventDefault()
 
-    var email = document.getElementById('inputEmail').value
-    var senha = document.getElementById('inputSenha').value
+    const email = document.getElementById('inputEmail').value
+    const senha = document.getElementById('inputSenha').value
 
     if (!email || !senha) {
         alert('Preencha o e-mail e a senha.')
         return
     }
 
-    var loginOk = loginUser(email, senha)
+    const loginOk = loginUser(email, senha)
 
     if (loginOk) {
         window.location.href = HOME_URL
@@ -103,10 +108,11 @@ function processaFormLogin(event) {
 function processaFormCadastro(event) {
     event.preventDefault()
 
-    var nome  = document.getElementById('inputNome').value.trim()
-    var email = document.getElementById('inputEmailCad').value.trim()
-    var senha = document.getElementById('inputSenhaCad').value
-    var senha2 = document.getElementById('inputConfirmaSenha').value
+    const nome  = document.getElementById('inputNome').value.trim()
+    const email = document.getElementById('inputEmailCad').value.trim()
+    const senha = document.getElementById('inputSenhaCad').value
+    const senha2 = document.getElementById('inputConfirmaSenha').value
+    const usuarioEmpresa = document.getElementById('inputEmpresa')
 
     if (!nome || !email || !senha) {
         alert('Preencha todos os campos obrigatórios.')
@@ -123,13 +129,16 @@ function processaFormCadastro(event) {
         return
     }
 
-    var emailJaExiste = db_usuarios.usuarios.some(u => u.email === email)
+    const empresa = usuarioEmpresa.checked ? true : false
+
+    let emailJaExiste = db_usuarios.usuarios.some(u => u.email === email)
     if (emailJaExiste) {
         alert('Este e-mail já está cadastrado. Faça login ou use outro e-mail.')
         return
     }
 
-    addUser(nome, email, senha);
+
+    addUser(nome, email, senha, empresa)
     alert('Cadastro realizado com sucesso! Faça login para continuar.')
     window.location.href = LOGIN_URL
 }

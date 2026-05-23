@@ -1,3 +1,24 @@
+document.addEventListener("DOMContentLoaded", function() {
+
+    const dadosSessao = sessionStorage.getItem("usuarioCorrente")
+    const addVaga = document.querySelector("#cadastraVaga")
+    const gerenciaVaga = document.querySelector("#gerenciaVaga")
+    
+    if (!dadosSessao) {
+        alert("Acesso Negado! Realize seu login primeiro!")
+        window.location.href = "../login/index.html"
+        return
+    }
+
+    const usuarioLogado = JSON.parse(dadosSessao)
+
+    if (!usuarioLogado.empresa) {
+        addVaga.style.display = "none"
+        gerenciaVaga.style.display = "none"
+    }
+})
+
+
 let db_oportunidades_inicial = {
     "oportunidades": [
         {
@@ -62,7 +83,7 @@ function insertOportunidade(oportunidade) {
         "data_encerramento": oportunidade.data_encerramento
     }
 
-    db.oportunidades.push(novaOportunidade);
+    db.oportunidades.push(novaOportunidade)
     displayMessage("Oportunidade inserida com sucesso!")
     localStorage.setItem('db_oportunidade', JSON.stringify(db))
 }

@@ -6,7 +6,7 @@
 
 .contain {
     width: 800px;
-    height: 480px;
+    height: 570px;
     display: flex;
     border-radius: 12px;
     border: 2px solid #51a6cc;
@@ -153,6 +153,48 @@ a {
 a:hover {
     text-decoration: underline;
     color: #376d4b;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.checkbox-wrapper > label {
+    color: #376d4b;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkbox-wrapper > input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #51a6cc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out .2s;
+    margin: 0;
+}
+
+.checkbox-wrapper > input[type="checkbox"]:checked {
+    background-color: #376d4b;
+    border-color: #376d4b;
+}
+
+.checkbox-wrapper > input[type="checkbox"]:checked::after {
+    content: "✔";
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 /* Para telas menores que 850px (Tablets e Notebooks pequenos) */

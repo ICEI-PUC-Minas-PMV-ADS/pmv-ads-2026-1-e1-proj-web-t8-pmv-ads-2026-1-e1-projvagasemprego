@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,13 @@
             height: auto;
             min-height: 520px;
         }
+
         .login {
             padding: 30px 0;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="contain">
@@ -47,6 +50,10 @@
                             <label for="inputConfirmaSenha">Confirmar senha</label>
                             <input type="password" id="inputConfirmaSenha" placeholder="Repita a senha">
                         </div>
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" name="usuario_empresa" id="inputEmpresa">
+                            <label for="inputConfirmaSenha">Usuário Empresa?</label>
+                        </div>
                         <button type="submit">Cadastrar</button>
                         <div class="form-footer">
                             Já tem conta? <a href="index.html">Faça login</a>
@@ -59,4 +66,5 @@
 
     <script src="cadastro.js"></script>
 </body>
+
 </html>
