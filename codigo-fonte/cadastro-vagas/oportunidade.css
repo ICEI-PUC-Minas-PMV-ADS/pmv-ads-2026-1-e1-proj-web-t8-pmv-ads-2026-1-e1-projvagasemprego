@@ -15,7 +15,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px #00000014;
 }
 
 .navbar-brand-uai {
@@ -42,6 +42,88 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.menu-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburguer-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.hamburguer-icon span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #1a9cd4;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-balao {
+    position: absolute;
+    top: 35px;
+    right: -5px;
+    width: 200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px #00000026;
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0;
+    border: 1px solid #eaeaea;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-in-out;
+    z-index: 1001;
+}
+
+.menu-balao::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    border-top: 1px solid #eaeaea;
+    border-left: 1px solid #eaeaea;
+}
+
+.menu-balao.ativo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.menu-balao a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    transition: background 0.2s;
+}
+
+.menu-balao a:hover {
+    background-color: #f4f7f6;
+    color: #1a9cd4;
+}
+
+.menu-balao .divisor {
+    height: 1px;
+    background-color: #eaeaea;
+    margin: 4px 0;
 }
 
 .btn-nav-outline {
@@ -95,6 +177,23 @@ body {
     text-decoration: none;
 }
 
+.btn-cadastrar {
+    background: #1a9cd4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 22px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-cadastrar:hover {
+    background: #1580ad;
+    color: #fff;
+    text-decoration: none;
+}
+
 .hero {
     background: linear-gradient(135deg, #1a9cd4 0%, #0d7fb5 40%, #0e9e72 100%);
     padding: 50px 20px 60px;
@@ -106,7 +205,7 @@ body {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 28px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 1px 4px #00000033;
 }
 
 .search-bar {
@@ -117,7 +216,7 @@ body {
     margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px #00000033;
 }
 
 .search-bar input,
@@ -194,23 +293,6 @@ body {
     font-weight: 700;
 }
 
-.btn-cadastrar {
-    background: #1a9cd4;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 9px 22px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.btn-cadastrar:hover {
-    background: #1580ad;
-    color: #fff;
-    text-decoration: none;
-}
-
 .cards-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -221,7 +303,7 @@ body {
     background: #fff;
     border-radius: 10px;
     padding: 22px 24px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    box-shadow: 0 2px 10px #00000012;
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s;
     border-left: 4px solid #1a9cd4;
@@ -229,7 +311,7 @@ body {
 
 .vaga-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(26, 156, 212, 0.18);
+    box-shadow: 0 6px 20px #1a9cd42e;
 }
 
 .vaga-card h5 {
@@ -312,7 +394,6 @@ footer {
     margin-top: 50px;
 }
 
-
 label {
     font-weight: bolder;
 }
@@ -335,25 +416,13 @@ h1 {
     text-align: center;
 }
 
-#msg {
-    height: 60px;
-}
-
-#grid-oportunidades tbody {
-    cursor: pointer;
-}
-
-
-
 @media (max-width: 900px) {
-
     .cards-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-
     .navbar-uai {
         flex-direction: column;
         gap: 15px;
@@ -377,7 +446,7 @@ h1 {
     .search-bar {
         flex-direction: column;
         border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 15px #0000001a;
     }
 
     .search-bar input,

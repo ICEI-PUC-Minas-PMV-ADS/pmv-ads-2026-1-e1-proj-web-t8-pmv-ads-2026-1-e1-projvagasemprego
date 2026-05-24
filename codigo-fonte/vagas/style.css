@@ -1,0 +1,173 @@
+/* =========================================
+   1. RESET E GLOBAIS (Fundo da tela e fonte)
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f9;
+    /* Fundo cinza clarinho para destacar a caixa branca */
+}
+
+/* =========================================
+   2. NAVBAR (Menu superior padrão)
+   ========================================= */
+.navbar-uai {
+    background: #fff;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-brand-uai {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.navbar-brand-uai span {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.brand-uai {
+    color: #1a9cd4;
+}
+
+.brand-trampo {
+    color: #222;
+}
+
+.btn-nav-outline {
+    border: 2px solid #1a9cd4;
+    color: #1a9cd4;
+    background: transparent;
+    border-radius: 6px;
+    padding: 6px 18px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-nav-outline:hover {
+    background: #1a9cd4;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-nav-green {
+    background: #28c76f;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-nav-green:hover {
+    background: #22a85f;
+}
+
+/* =========================================
+   3. BADGES (Etiquetas da vaga)
+   ========================================= */
+.badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.badge-tipo {
+    background: #e8f4fd;
+    color: #1a9cd4;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-area {
+    background: #e8fdf0;
+    color: #28c76f;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* =========================================
+   4. ESTRUTURA DA VAGA (A caixa principal)
+   ========================================= */
+.detalhes-container {
+    max-width: 800px;
+    width: 90%;
+    /* Garante responsividade em telas menores */
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 5px solid #1a9cd4;
+    /* Linha azul de destaque no topo */
+}
+
+.detalhes-header {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.detalhes-header h2 {
+    color: #222;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.info-bloco {
+    margin-bottom: 25px;
+}
+
+.info-bloco h4 {
+    color: #1a9cd4;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.info-bloco p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* =========================================
+   5. ALERTAS E FEEDBACKS
+   ========================================= */
+.alerta-sucesso {
+    background: #e8fdf0;
+    color: #28c76f;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    border: 1px solid #28c76f;
+}
+
+.alerta-erro {
+    background: #fde8e8;
+    color: #d41a1a;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #d41a1a;
+}

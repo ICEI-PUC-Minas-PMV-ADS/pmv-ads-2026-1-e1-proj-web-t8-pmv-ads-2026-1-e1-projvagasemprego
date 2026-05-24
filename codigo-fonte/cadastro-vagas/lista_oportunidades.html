@@ -16,12 +16,24 @@
             <img src="../../documentos/img/logo.png" alt="" style="width: 50px;">
             <span><span class="brand-uai">Uai</span><span class="brand-trampo">Trampo</span></span>
         </a>
+
         <div class="navbar-nav-uai">
-            <a class="btn-nav-blue" href="#">Empresas</a>
-            <a class="btn-nav-outline" href="#">Candidatos</a>
-            <a class="btn-nav-green" href="#">Cadastre-se</a>
-            <a class="btn-nav-outline" id="gerenciaVaga" href="index.html">Gerenciar Vagas</a>
-            <a class="btn-nav-outline" href="lista_oportunidades.html">Ver Vagas</a>
+        </div>
+
+        <div class="menu-container">
+            <div class="hamburguer-icon" onclick="toggleMenu(event)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu-balao" id="menuBalao">
+                <a href="#">Meu Perfil</a>
+                <a href="../vagas/vaga_detalhes.html">Minhas Candidaturas</a>
+                <a href="#">Configurações</a>
+                <div class="divisor"></div>
+                <a href="../login/index.html" style="color: #d41a1a;" onclick="logout()">Sair da Conta</a>
+            </div>
         </div>
     </nav>
 
@@ -69,53 +81,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="app.js"></script>
-    <script>
-        function listaOportunidades() {
-            let oportunidades = db.oportunidades
-
-            let filtroTitulo = document.getElementById('filtro_titulo').value.toLowerCase()
-            let filtroCidade = document.getElementById('filtro_cidade').value.toLowerCase()
-            let filtroArea = document.getElementById('filtro_area').value
-            let filtroTipo = document.getElementById('filtro_tipo').value
-
-            let resultado = oportunidades.filter(op => {
-                let bateTitulo = filtroTitulo === '' || op.titulo.toLowerCase().includes(filtroTitulo) || op.empresa.toLowerCase().includes(filtroTitulo)
-                let bateCidade = filtroCidade === '' || op.cidade.toLowerCase().includes(filtroCidade)
-                let bateArea = filtroArea === '' || op.area === filtroArea
-                let bateTipo = filtroTipo === '' || op.tipo === filtroTipo
-                return bateTitulo && bateCidade && bateArea && bateTipo
-            })
-
-            let total = resultado.length
-            $("#total-vagas").text(total + (total === 1 ? ' vaga encontrada' : ' vagas encontradas'))
-            $("#cards-oportunidades").empty()
-
-            if (total === 0) {
-                $("#cards-oportunidades").append('<p class="sem-resultados">Nenhuma vaga encontrada para os filtros selecionados.</p>')
-                return
-            }
-
-            resultado.forEach(op => {
-                let dataFormatada = op.data_encerramento ? 'Encerra em ' + op.data_encerramento : ''
-                $("#cards-oportunidades").append(`
-                    <div class="vaga-card">
-                        <h5>${op.titulo}</h5>
-                        <div class="empresa">🏢 ${op.empresa} — ${op.cidade}</div>
-                        <div class="descricao">${op.descricao}</div>
-                        <div class="badges">
-                            <span class="badge-tipo">${op.tipo}</span>
-                            <span class="badge-area">${op.area}</span>
-                        </div>
-                        <div class="rodape">
-                            <span class="salario">${op.salario || 'Salário a combinar'}</span>
-                            <span>${dataFormatada}</span>
-                        </div>
-                    </div>`)
-            })
-        }
-
-        window.onload = () => listaOportunidades()
-    </script>
 </body>
 
 </html>

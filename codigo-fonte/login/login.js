@@ -1,3 +1,6 @@
+let idNumber = 1
+
+
 function initDB() {
     const dbData = localStorage.getItem("db_usuarios")
 
@@ -5,14 +8,14 @@ function initDB() {
         const dadosIniciais = {
             usuarios: [
                 {
-                    "id": "1",
+                    "id": generateUUID(),
                     "nome": "Administrador",
                     "email": "admin@uaitrampo.com",
                     "senha": "123",
                     "empresa": true
                 },
                 {
-                    "id": "2",
+                    "id": generateUUID(),
                     "nome": "Candidato Teste",
                     "email": "candidato@uaitrampo.com",
                     "senha": "123",
@@ -23,6 +26,11 @@ function initDB() {
 
         localStorage.setItem("db_usuarios", JSON.stringify(dadosIniciais))
     }
+}
+
+
+function generateUUID() {
+    return idNumber++
 }
 
 
@@ -50,13 +58,15 @@ function Login() {
     const validate = validateLogin(inputEmail, inputPass)
 
     if (validate) {
-        window.location.replace("../cadastro-vagas/index.html")
+        window.location.replace("../cadastro-vagas/lista_oportunidades.html")
     } else {
         alert("E-mail ou senha incorretos!")
     }
 }
 
+
 initDB()
+
 
 function validateLogin(email, pass) {
     const dbData = localStorage.getItem("db_usuarios")

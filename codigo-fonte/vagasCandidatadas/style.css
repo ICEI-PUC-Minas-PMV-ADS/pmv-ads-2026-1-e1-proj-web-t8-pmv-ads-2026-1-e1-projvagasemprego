@@ -1,0 +1,12 @@
+.header-candidaturas {
+    background: linear-gradient(135deg, #1a9cd4 0%, #0d7fb5 40%, #0e9e72 100%);
+    padding: 40px 20px;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.header-candidaturas h2 {
+    font-weight: 700;
+    margin: 0;
+}
