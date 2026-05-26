@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!vaga) {
         conteudoVaga.innerHTML = `
-                    <div class="detalhes-container">
-                        <h2 style="text-align: center; color: #555;">Vaga não encontrada.</h2>
-                    </div>`
+            <div class="detalhes-container">
+                <h2 style="text-align: center; color: #555;">Vaga não encontrada.</h2>
+            </div>`
         return
     }
 
@@ -91,20 +91,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function confirmarCandidatura() {
         const bd = JSON.parse(localStorage.getItem("vagas_oportunidades"))
-        const index = bd.oportunidades.findIndex(v => String(v.id) === String(vaga.id))
+        const idUrl = new URLSearchParams(window.location.search)
+        const idCap = idUrl.get('id')
 
-        if (index !== -1) {
-            if (!bd.oportunidades[index].candidatos) {
-                bd.oportunidades[index].candidatos = []
-            }
+        const indiceVaga = bd.oportunidades.findIndex(f => f.id === Number(idCap))
 
-            bd.oportunidades[index].candidatos.push(usuarioLogado.id)
-            localStorage.setItem("vagas_oportunidades", JSON.stringify(bd))
+        if (indiceVaga === []) return
+        
+        bd.oportunidades[indiceVaga].candidatos.push(usuarioLogado.id)
+        localStorage.setItem("vagas_oportunidades", JSON.stringify(bd))
 
-            jaCandidatou = true
+        jaCandidatou = true
 
-            renderizarTela()
-            alert("Candidatura realizada com sucesso!")
-        }
+        renderizarTela()
+        alert("Candidatura realizada com sucesso!")
     }
 })

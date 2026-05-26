@@ -31,7 +31,7 @@ let db_oportunidades_inicial = {
             "tipo": "CLT",
             "descricao": "Vaga para desenvolvedor front-end com conhecimentos em HTML, CSS e JavaScript.",
             "data_encerramento": "2026-06-30",
-            candidatos = []
+            candidatos: []
         },
         {
             "id": 2,
@@ -43,7 +43,7 @@ let db_oportunidades_inicial = {
             "tipo": "CLT",
             "descricao": "Responsável por campanhas nas redes sociais e gestão de tráfego pago.",
             "data_encerramento": "2026-05-31",
-            candidatos = []
+            candidatos: []
         },
         {
             "id": 3,
@@ -55,7 +55,7 @@ let db_oportunidades_inicial = {
             "tipo": "Estágio",
             "descricao": "Apoio ao setor de recrutamento e seleção de candidatos.",
             "data_encerramento": "2026-06-15",
-            candidatos = []
+            candidatos: []
         }
     ]
 }
