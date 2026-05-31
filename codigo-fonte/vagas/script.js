@@ -1,109 +1,99 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const conteudoVaga = document.getElementById('conteudo-vaga')
+    console.log("Teste")
+    const containerVagas = document.getElementById('grid-minhas-vagas')
+    const contadorVagas = document.getElementById('contador-vagas')
 
     const sessao = sessionStorage.getItem("usuarioCorrente")
-    let usuarioLogado = sessao ? JSON.parse(sessao) : null
+    if (!sessao) {
+        alert("Você precisa estar logado para ver suas candidaturas!")
+        window.location.href = "../login/index.html"
+        return
+    }
+    
 
-    const urlParams = new URLSearchParams(window.location.search)
-    const idDaVaga = urlParams.get('id')
+    const usuarioLogado = JSON.parse(sessao)
 
-    const bancoDeDados = JSON.parse(localStorage.getItem("vagas_oportunidades"))
-    let vaga = null
+    const dbData = localStorage.getItem("vagas_oportunidades")
+    const bancoDeDados = dbData ? JSON.parse(dbData) : { oportunidades: [] }
 
-    if (bancoDeDados && bancoDeDados.oportunidades) {
-        vaga = bancoDeDados.oportunidades.find(v => String(v.id) === String(idDaVaga))
+    function candidatoEstaInscrito(candidatos = [], usuarioId) {
+        return candidatos.some(c => {
+            if (typeof c === 'object' && c !== null) {
+                return c.idUsuario === usuarioId
+            }
+            return c === usuarioId
+        })
     }
 
-    if (!vaga) {
-        conteudoVaga.innerHTML = `
-            <div class="detalhes-container">
-                <h2 style="text-align: center; color: #555;">Vaga não encontrada.</h2>
-            </div>`
+    const minhasVagas = bancoDeDados.oportunidades.filter(vaga => {
+        return vaga.candidatos && candidatoEstaInscrito(vaga.candidatos, usuarioLogado.id)
+    })
+
+    const total = minhasVagas.length
+    if (total === 0) {
+        contadorVagas.textContent = "Você ainda não se candidatou a nenhuma vaga."
+        containerVagas.innerHTML = `
+            <p class="sem-resultados" style="grid-column: 1 / -1; text-align: center;">
+                Comece a explorar oportunidades e dê o próximo passo na sua carreira!<br><br>
+                <a href="lista_oportunidades.html" class="btn-nav-green" style="display:inline-block; margin-top:15px; padding: 10px 20px;">Explorar Vagas</a>
+            </p>`
         return
     }
 
-    let jaCandidatou = false
-    if (usuarioLogado && !usuarioLogado.empresa) {
-        if (vaga.candidatos && vaga.candidatos.includes(usuarioLogado.id)) {
-            jaCandidatou = true
-        }
-    }
+    contadorVagas.textContent = total === 1 ? '1 candidatura encontrada' : `${total} candidaturas encontradas`
 
-    function renderizarTela() {
-        let statusAcaoHtml = ''
+    containerVagas.innerHTML = ''
 
-        if (!usuarioLogado) {
-            statusAcaoHtml = `
-                        <div class="alerta-erro">
-                            Você precisa estar logado para se candidatar.<br><br>
-                            <a href="../login/index.html" class="btn-nav-blue">Fazer Login</a>
-                        </div>`;
-        } else if (usuarioLogado.empresa) {
-            statusAcaoHtml = `
-                        <div class="alerta-erro">
-                            Contas do tipo <strong>Empresa</strong> não podem se candidatar a vagas.
-                        </div>`;
-        } else if (jaCandidatou) {
-            statusAcaoHtml = `
-                        <div class="alerta-sucesso">
-                            ✅ Você já está candidatado a esta vaga! Boa sorte!
-                        </div>`
-        } else {
-            statusAcaoHtml = `
-                        <div style="text-align: center; margin-top: 30px;">
-                            <button id="btn-candidatar" class="btn-nav-green" style="width: 250px; padding: 15px; font-size: 1.1rem;">
-                                Candidatar-se Agora
-                            </button>
-                        </div>`
-        }
+    minhasVagas.forEach(vaga => {
+        let dataFormatada = vaga.data_encerramento ? `Encerra em ${vaga.data_encerramento}` : ''
 
-        conteudoVaga.innerHTML = `
-                    <div class="detalhes-container">
-                        <div class="detalhes-header">
-                            <h2>${vaga.titulo}</h2>
-                            <div class="badges">
-                                <span class="badge-tipo">${vaga.tipo}</span>
-                                <span class="badge-area">${vaga.area}</span>
-                            </div>
-                        </div>
+        let cardHtml = `
+            <div class="vaga-card">
+                <h5>${vaga.titulo}</h5>
+                <div class="empresa">🏢 ${vaga.empresa} — ${vaga.cidade}</div>
+                <div class="descricao">${vaga.descricao}</div>
+                
+                <div class="badges">
+                    <span class="badge-tipo">${vaga.tipo}</span>
+                    <span class="badge-area">${vaga.area}</span>
+                </div>
+                
+                <div class="rodape">
+                    <span class="salario" style="color: #1a9cd4;">Candidatura Registrada ✅</span>
+                    <span>${dataFormatada}</span>
+                </div>
+            </div>
+        `
 
-                        <div class="info-bloco">
-                            <h4>Empresa</h4>
-                            <p>🏢 ${vaga.empresa} — ${vaga.cidade}</p>
-                        </div>
+        containerVagas.insertAdjacentHTML('beforeend', cardHtml)
+    })
+})
 
-                        <div class="info-bloco">
-                            <h4>Descrição da Vaga</h4>
-                            <p>${vaga.descricao}</p>
-                        </div>
 
-                        ${statusAcaoHtml}
-                    </div>
-                `;
+function toggleMenu(event) {
+    event.stopPropagation()
+    const menuBalao = document.getElementById('menuBalao')
+    if (menuBalao) menuBalao.classList.toggle('ativo')
+}
 
-        const btnCandidatar = document.getElementById('btn-candidatar')
-        if (btnCandidatar) {
-            btnCandidatar.addEventListener('click', confirmarCandidatura)
-        }
-    }
 
-    renderizarTela()
-
-    function confirmarCandidatura() {
-        const bd = JSON.parse(localStorage.getItem("vagas_oportunidades"))
-        const idUrl = new URLSearchParams(window.location.search)
-        const idCap = idUrl.get('id')
-
-        const indiceVaga = bd.oportunidades.findIndex(f => f.id === Number(idCap))
-
-        if (indiceVaga === []) return
-        
-        bd.oportunidades[indiceVaga].candidatos.push(usuarioLogado.id)
-        localStorage.setItem("vagas_oportunidades", JSON.stringify(bd))
-
-        jaCandidatou = true
-
-        renderizarTela()
-        alert("Candidatura realizada com sucesso!")
+window.addEventListener('click', function (event) {
+    const menuBalao = document.getElementById('menuBalao')
+    if (menuBalao && menuBalao.classList.contains('ativo')) {
+        menuBalao.classList.remove('ativo')
     }
 })
+
+
+const menuBalaoElement = document.getElementById('menuBalao')
+if (menuBalaoElement) {
+    menuBalaoElement.addEventListener('click', function (event) {
+        event.stopPropagation()
+    })
+}
+
+
+function logout() {
+    sessionStorage.removeItem("usuarioCorrente")
+    window.location.href = "../login/index.html"
+}
