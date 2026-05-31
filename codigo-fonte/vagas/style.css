@@ -171,3 +171,58 @@ body {
     margin-top: 20px;
     border: 1px solid #d41a1a;
 }
+
+.form-candidatura {
+    margin-top: 20px;
+}
+
+.form-candidatura h3 {
+    color: #1a9cd4;
+    margin-bottom: 18px;
+    font-size: 1.2rem;
+}
+
+.form-candidatura-box {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #f5fbff;
+    border: 1px solid #daeaf5;
+    padding: 22px;
+    border-radius: 12px;
+}
+
+.form-candidatura-box label {
+    color: #1a9cd4;
+    font-weight: 600;
+}
+
+.form-candidatura-box input,
+.form-candidatura-box textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d7e4ed;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #333;
+    background: #fff;
+}
+
+.form-candidatura-box textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.form-candidatura-box input:focus,
+.form-candidatura-box textarea:focus {
+    outline: none;
+    border-color: #1a9cd4;
+    box-shadow: 0 0 0 3px rgba(26, 156, 212, 0.12);
+}
