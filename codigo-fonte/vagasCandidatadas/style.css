@@ -262,6 +262,77 @@ body {
     font-size: 0.78rem;
     font-weight: 600;
 }
+.perfil-box,
+.config-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    padding: 28px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.perfil-box h2,
+.config-box h2 {
+    margin-bottom: 18px;
+    color: #1a9cd4;
+    font-size: 1.6rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #1a9cd4;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px 14px;
+    border: 1px solid #d7e4ed;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #f9fcff;
+    color: #333;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.form-message {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background: #e8f4fd;
+    color: #1a9cd4;
+    border: 1px solid #cbe5f7;
+}
+
+.form-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-toggle input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
 
 .badge-area {
     background: #e8fdf0;
