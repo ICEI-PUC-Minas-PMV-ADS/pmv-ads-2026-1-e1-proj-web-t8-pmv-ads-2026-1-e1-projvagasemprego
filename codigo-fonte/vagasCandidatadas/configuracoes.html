@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - UaiTrampo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../../documentos/img/logo.png">
+</head>
+
+<body>
+    <nav class="navbar-uai">
+        <a class="navbar-brand-uai" href="../cadastro-vagas/lista_oportunidades.html">
+            <img src="../../documentos/img/logo.png" alt="" style="width: 50px;">
+            <span><span class="brand-uai">Uai</span><span class="brand-trampo">Trampo</span></span>
+        </a>
+
+        <div class="navbar-nav-uai"></div>
+
+        <div class="menu-container">
+            <div class="hamburguer-icon" onclick="toggleMenu(event)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu-balao" id="menuBalao">
+                <a href="perfil.html">Meu Perfil</a>
+                <a href="index.html">Minhas Candidaturas</a>
+                <a href="configuracoes.html">Configurações</a>
+                <div class="divisor"></div>
+                <a href="../login/index.html" style="color: #d41a1a;" onclick="logout()">Sair da Conta</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-area">
+        <div class="results-header">
+            <h4>Configurações</h4>
+            <a href="index.html" class="btn-nav-outline">Voltar</a>
+        </div>
+
+        <div class="config-box">
+            <h2>Segurança e Preferências</h2>
+            <form id="configuracoes-form" class="perfil-form">
+                <div class="form-group">
+                    <label for="senhaAtual">Senha atual</label>
+                    <input id="senhaAtual" type="password" placeholder="Digite sua senha atual">
+                </div>
+                <div class="form-group">
+                    <label for="novaSenha">Nova senha</label>
+                    <input id="novaSenha" type="password" placeholder="Nova senha">
+                </div>
+                <div class="form-group">
+                    <label for="confirmaSenha">Confirmar nova senha</label>
+                    <input id="confirmaSenha" type="password" placeholder="Repita a nova senha">
+                </div>
+                <div class="form-group form-toggle">
+                    <input id="notificacoes" type="checkbox">
+                    <label for="notificacoes">Receber notificações por e-mail</label>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-nav-green">Salvar Configurações</button>
+                </div>
+                <div id="config-mensagem" class="form-message" style="display:none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <footer>© 2026 UaiTrampo. Todos os direitos reservados.</footer>
+
+    <script src="configuracoes.js"></script>
+</body>
+
+</html>
