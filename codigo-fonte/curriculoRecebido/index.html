@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UaiTrampo - Oportunidades</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="../../documentos/img/logo.png">
+</head>
+
+<body>
+    <nav class="navbar-uai">
+        <a class="navbar-brand-uai" href="../cadastro-vagas/lista_oportunidades.html">
+            <img src="../../documentos/img/logo.png" alt="" style="width: 50px;">
+            <span><span class="brand-uai">Uai</span><span class="brand-trampo">Trampo</span></span>
+        </a>
+
+        <div class="navbar-nav-uai">
+        </div>
+
+        <div class="menu-container">
+            <div class="hamburguer-icon" onclick="toggleMenu(event)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu-balao" id="menuBalao">
+                <a href="../vagasCandidatadas/perfil.html">Meu Perfil</a>
+                <a href="#" id="switchText" onclick="redirectUser()">Currículos Recebidos</a>
+                <a href="../vagasCandidatadas/configuracoes.html">Configurações</a>
+                <div class="divisor"></div>
+                <a href="../login/index.html" style="color: #d41a1a;" onclick="logout()">Sair da Conta</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h2>Encontre o candidado ideal para você</h2>
+    </section>
+
+    <footer>© 2026 UaiTrampo. Todos os direitos reservados.</footer>
+
+    <script src="script.js"></script>
+    <script src="../cadastro-vagas/app.js"></script>
+</body>
+
+</html>

@@ -13,32 +13,27 @@
 <body onload="init()">
     <nav class="navbar-uai">
         <a class="navbar-brand-uai" href="lista_oportunidades.html">
-            <img src="../../documentos/img/logo.png" style="width: 50px;" alt="">
-            <rect width="200" height="200" rx="18" fill="#111" />
-            <path d="M 28 130 Q 100 18 172 130" stroke="white" stroke-width="11" fill="none" stroke-linecap="round" />
-            <polyline points="18,155 58,95 95,128 130,78 182,155" stroke="white" stroke-width="10" fill="none"
-                stroke-linejoin="round" stroke-linecap="round" />
-            <polyline points="28,172 58,135 95,155 130,118 172,172" stroke="#e74c3c" stroke-width="9" fill="none"
-                stroke-linejoin="round" stroke-linecap="round" />
-            <polyline points="40,185 62,158 95,172 128,148 160,185" stroke="#e74c3c" stroke-width="7" fill="none"
-                stroke-linejoin="round" stroke-linecap="round" />
-            <circle cx="122" cy="88" r="24" fill="#29b6f6" />
-            <circle cx="122" cy="88" r="16" fill="#111" />
-            <line x1="139" y1="105" x2="158" y2="124" stroke="#29b6f6" stroke-width="11" stroke-linecap="round" />
-            <rect x="114" y="80" width="16" height="14" rx="2" fill="white" opacity="0.85" />
-            <line x1="117" y1="84" x2="127" y2="84" stroke="#111" stroke-width="1.8" />
-            <line x1="117" y1="87" x2="127" y2="87" stroke="#111" stroke-width="1.8" />
-            <line x1="117" y1="90" x2="123" y2="90" stroke="#111" stroke-width="1.8" />
-            </svg>
+            <img src="../../documentos/img/logo.png" alt="" style="width: 50px;">
             <span><span class="brand-uai">Uai</span><span class="brand-trampo">Trampo</span></span>
         </a>
-        <div class="navbar-nav-uai">
-            <a class="btn-nav-blue" href="#">Empresas</a>
-            <a class="btn-nav-outline" href="#">Candidatos</a>
-            <a class="btn-nav-green" href="#">Cadastre-se</a>
-            <a class="btn-nav-outline" href="lista_oportunidades.html">Ver Vagas</a>
-            <a class="btn btn-danger" href="#" onclick="logout()">Logout</a>
 
+        <div class="navbar-nav-uai">
+        </div>
+
+        <div class="menu-container">
+            <div class="hamburguer-icon" onclick="toggleMenu(event)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu-balao" id="menuBalao">
+                <a href="../vagasCandidatadas/perfil.html">Meu Perfil</a>
+                <a href="#" id="switchText" onclick="redirectUser()"></a>
+                <a href="../vagasCandidatadas/configuracoes.html">Configurações</a>
+                <div class="divisor"></div>
+                <a href="../login/index.html" style="color: #d41a1a;" onclick="logout()">Sair da Conta</a>
+            </div>
         </div>
     </nav>
 
@@ -149,113 +144,7 @@
 
     <footer>© 2026 UaiTrampo. Todos os direitos reservados.</footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="app.js"></script>
-    <script>
-        function exibeOportunidades() {
-            let oportunidades = db.oportunidades
-            $("#table-oportunidades").html("")
-            for (let i = 0; i < oportunidades.length; i++) {
-                let op = oportunidades[i]
-                $("#table-oportunidades").append(`
-                    <tr>
-                        <td>${op.id}</td>
-                        <td>${op.titulo}</td>
-                        <td>${op.empresa}</td>
-                        <td>${op.area}</td>
-                        <td>${op.tipo}</td>
-                        <td>${op.cidade}</td>
-                        <td>${op.salario}</td>
-                        <td>${op.data_encerramento}</td>
-                    </tr>`)
-            }
-        }
-
-        function init() {
-            $("#btnInsert").click(function () {
-                if (!$('#form-oportunidade')[0].checkValidity()) {
-                    displayMessage("Preencha o formulário corretamente.")
-                    return
-                }
-                let oportunidade = {
-                    titulo: $("#inputTitulo").val(),
-                    empresa: $("#inputEmpresa").val(),
-                    area: $("#inputArea").val(),
-                    cidade: $("#inputCidade").val(),
-                    salario: $("#inputSalario").val(),
-                    tipo: $("#inputTipo").val(),
-                    descricao: $("#inputDescricao").val(),
-                    data_encerramento: $("#inputDataEncerramento").val()
-                }
-                insertOportunidade(oportunidade)
-                exibeOportunidades()
-                $("#form-oportunidade")[0].reset()
-            })
-
-            $("#btnUpdate").click(function () {
-                if (!$("#inputId").val()) {
-                    displayMessage("Selecione uma oportunidade para ser alterada.")
-                    return
-                }
-                let campoId = parseInt($("#inputId").val())
-                let oportunidade = {
-                    id: campoId,
-                    titulo: $("#inputTitulo").val(),
-                    empresa: $("#inputEmpresa").val(),
-                    area: $("#inputArea").val(),
-                    cidade: $("#inputCidade").val(),
-                    salario: $("#inputSalario").val(),
-                    tipo: $("#inputTipo").val(),
-                    descricao: $("#inputDescricao").val(),
-                    data_encerramento: $("#inputDataEncerramento").val()
-                }
-                updateOportunidade(campoId, oportunidade)
-                exibeOportunidades()
-                $("#form-oportunidade")[0].reset()
-            })
-
-            $("#btnDelete").click(function () {
-                let campoId = $("#inputId").val()
-                if (campoId == "") {
-                    displayMessage("Selecione uma oportunidade a ser excluída.")
-                    return
-                }
-                deleteOportunidade(parseInt(campoId))
-                exibeOportunidades()
-                $("#form-oportunidade")[0].reset()
-            })
-
-            $("#btnClear").click(function () {
-                $("#form-oportunidade")[0].reset()
-            })
-
-            $('#msg').bind("DOMSubtreeModified", function () {
-                window.setTimeout(() => { $(".alert").fadeTo(500, 0).slideUp(500); }, 5000)
-            })
-
-            $("#grid-oportunidades").on("click", 'tr', (evento) => {
-                let linha = evento.currentTarget
-                let colunas = linha.querySelectorAll("td")
-                if (colunas.length === 0) return
-
-                let id = parseInt(colunas[0].innerText)
-                let op = db.oportunidades.find(o => o.id === id)
-                if (!op) return
-
-                $("#inputId").val(op.id)
-                $("#inputTitulo").val(op.titulo)
-                $("#inputEmpresa").val(op.empresa)
-                $("#inputArea").val(op.area)
-                $("#inputTipo").val(op.tipo)
-                $("#inputCidade").val(op.cidade)
-                $("#inputSalario").val(op.salario)
-                $("#inputDescricao").val(op.descricao)
-                $("#inputDataEncerramento").val(op.data_encerramento)
-            })
-
-            exibeOportunidades()
-        }
-    </script>
 </body>
 
 </html>

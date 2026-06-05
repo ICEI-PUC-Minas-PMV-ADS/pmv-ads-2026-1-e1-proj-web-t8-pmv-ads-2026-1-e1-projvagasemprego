@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="../../documentos/img/logo.png">
 </head>
 
-<body>
+<body onload="init()">
     <nav class="navbar-uai">
         <a class="navbar-brand-uai" href="lista_oportunidades.html">
             <img src="../../documentos/img/logo.png" alt="" style="width: 50px;">
@@ -29,7 +29,7 @@
 
             <div class="menu-balao" id="menuBalao">
                 <a href="../vagasCandidatadas/perfil.html">Meu Perfil</a>
-                <a href="../vagasCandidatadas/index.html">Minhas Candidaturas</a>
+                <a href="#" id="switchText" onclick="redirectUser()"></a>
                 <a href="../vagasCandidatadas/configuracoes.html">Configurações</a>
                 <div class="divisor"></div>
                 <a href="../login/index.html" style="color: #d41a1a;" onclick="logout()">Sair da Conta</a>
@@ -79,7 +79,6 @@
 
     <footer>© 2026 UaiTrampo. Todos os direitos reservados.</footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="app.js"></script>
 </body>
 

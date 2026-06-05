@@ -479,35 +479,3 @@ h1 {
         gap: 8px;
     }
 }
-
-.btn-candidatar {
-    display: block;
-    width: 100%;
-    background-color: #1a9cd4;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 0;
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 15px;
-    text-align: center;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.btn-candidatar:hover {
-    background-color: #1580ad;
-}
-
-.btn-candidatar:active {
-    transform: scale(0.98);
-}
-
-.btn-candidatar.ja-candidatado {
-    background-color: #a0aec0;
-    color: #fff;
-    cursor: not-allowed;
-    opacity: 0.8;
-    transform: none;
-}
