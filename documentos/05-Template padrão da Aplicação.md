@@ -23,9 +23,3 @@ Este template padrão será utilizado em todas as páginas do site. Ele define a
 - Verde: rgb(25, 166, 63) - Usado para botões de ação positiva (ex: "Enviar", "Confirmar").
 - Branco: rgb(255, 255, 255) - Fundo principal e textos claros.
 - Preto: rgb(0, 0, 0) - Texto principal e cabeçalhos.
-
-## Links Úteis:
->
-> - [CSS Website Layout (W3Schools)](https://www.w3schools.com/css/css_website_layout.asp)
-> - [w3schools](https://www.w3schools.com/html/)
-> - [MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
