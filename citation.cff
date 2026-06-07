@@ -1,29 +1,28 @@
 message: Please cite this software using these metadata.
-title:
+title: UaiTrampo
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Santos
+    given-names: Lucas Barbosa dos
+  - family-names: Santiago
+    given-names: Karyne Evelyn Tavares
+  - family-names: Silva
+    given-names: Aster dos Santos
+  - family-names: Junior
+    given-names: André Luis da Silva
+  - family-names: Vieira
+    given-names: Leandro Augusto
+  - family-names: Martins
+    given-names: Miguel Vieira
+  - family-names: Santiago
+    given-names: Ryan Gonçalves Gomes
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Tavares
+    given-names: Clóvis Lemos
 keywords:
-  - 
-  - 
-repository-code: 
+  - javascript
+  - html
+  - css
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t8-pmv-ads-2026-1-e1-projvagasemprego
 version: 1.0.0
-date-released: 2023-10-31
+date-released: 2026-06-07
