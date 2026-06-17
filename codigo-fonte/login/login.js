@@ -12,14 +12,18 @@ function initDB() {
                     "nome": "Administrador",
                     "email": "admin@uaitrampo.com",
                     "senha": "123",
-                    "empresa": true
+                    "empresa": true,
+                    "telefone" : "31999999999",
+                    "cpf_cnpj": "00011122233344"
                 },
                 {
                     "id": generateUUID(),
                     "nome": "Candidato Teste",
                     "email": "candidato@uaitrampo.com",
                     "senha": "123",
-                    "empresa": false
+                    "empresa": false,
+                    "telefone" : "31999999999",
+                    "cpf_cnpj": "00011122233"
                 }
             ]
         }

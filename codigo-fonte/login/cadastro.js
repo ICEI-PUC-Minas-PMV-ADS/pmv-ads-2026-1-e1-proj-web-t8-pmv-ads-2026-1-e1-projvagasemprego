@@ -3,22 +3,45 @@ const HOME_URL = "../Cadastro-de-Oportunidades/lista_oportunidades.html"
 let db_usuarios = {}
 const usuarioCorrente = {}
 let idNumber = 1
+const divCNPJ = document.querySelector(".divCNPJ")
+const divCPF = document.querySelector(".divCPF")
 
 const dadosIniciais = {
     usuarios: [
-        { "id": generateUUID(), "nome": "Administrador", "email": "admin@uaitrampo.com", "senha": "123", "empresa": true },
-        { "id": generateUUID(), "nome": "Candidato Teste", "email": "candidato@uaitrampo.com", "senha": "123", "empresa": false }
+        { 
+            "id": generateUUID(), 
+            "nome": "Administrador", 
+            "email": "admin@uaitrampo.com", 
+            "senha": "123", 
+            "empresa": true, 
+            "telefone": "31999999999",
+            "cpf_cnpj": "00011122233344"
+        },
+        { 
+            "id": generateUUID(), 
+            "nome": "Candidato Teste", 
+            "email": "candidato@uaitrampo.com", 
+            "senha": "123", 
+            "empresa": false, 
+            "telefone": "31999999999",
+            "cpf_cnpj": "00011122233"
+        }
     ]
 }
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    divCNPJ.style.display = "none"
+})
+
+
 function initLoginApp() {
-    var usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente')
+    const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente')
     if (usuarioCorrenteJSON) {
         usuarioCorrente = JSON.parse(usuarioCorrenteJSON)
     }
 
-    var usuariosJSON = localStorage.getItem('db_usuarios')
+    const usuariosJSON = localStorage.getItem('db_usuarios')
 
     if (!usuariosJSON) {
         db_usuarios = dadosIniciais
@@ -54,13 +77,15 @@ function logoutUser() {
 }
 
 
-function addUser(nome, email, senha, empresa) {
-    var novoUsuario = {
+function addUser({ nome, email, senha, empresa, telefone, cpfCnpj }) {
+    const novoUsuario = {
         "id": generateUUID(),
         "nome": nome,
         "email": email,
         "senha": senha,
-        "empresa": empresa
+        "empresa": empresa,
+        "telefone": telefone,
+        "cpf_cnpj": cpfCnpj
     }
     db_usuarios.usuarios.push(novoUsuario)
     localStorage.setItem('db_usuarios', JSON.stringify(db_usuarios))
@@ -93,11 +118,13 @@ function processaFormCadastro(event) {
 
     const nome  = document.getElementById('inputNome').value.trim()
     const email = document.getElementById('inputEmailCad').value.trim()
+    const telefone = Number(document.querySelector("#inputTelefoneCad").value)
+    const cpfCnpj = document.querySelector("#inputCPF").value.trim()
     const senha = document.getElementById('inputSenhaCad').value
     const senha2 = document.getElementById('inputConfirmaSenha').value
     const usuarioEmpresa = document.getElementById('inputEmpresa')
 
-    if (!nome || !email || !senha) {
+    if (!nome || !email || !senha || !telefone || !cpfCnpj) {
         alert('Preencha todos os campos obrigatórios.')
         return
     }
@@ -120,8 +147,17 @@ function processaFormCadastro(event) {
         return
     }
 
+    const userData = {
+        nome,
+        email,
+        senha,
+        empresa,
+        telefone,
+        cpfCnpj
+    }
 
-    addUser(nome, email, senha, empresa)
+    addUser(userData)
+
     alert('Cadastro realizado com sucesso! Faça login para continuar.')
     window.location.href = LOGIN_URL
 }
@@ -145,3 +181,21 @@ if (formCadastro) {
 function generateUUID() {
     return idNumber++
 }
+
+const checkboxUserType = document.querySelector("#inputEmpresa")
+checkboxUserType.addEventListener("change", function() {
+    const inputCNPJ = document.querySelector("#inputCNPJ")
+    const inputCPF = document.querySelector("#inputCPF")
+
+    if (checkboxUserType.checked) {
+        divCNPJ.style.display = "flex"
+        divCNPJ.required = true
+        divCPF.style.display = "none"
+        inputCPF.value = ""
+
+    } else {
+        divCNPJ.style.display = "none"
+        divCPF.style.display = "flex"
+        inputCNPJ.value = ""
+    }
+})

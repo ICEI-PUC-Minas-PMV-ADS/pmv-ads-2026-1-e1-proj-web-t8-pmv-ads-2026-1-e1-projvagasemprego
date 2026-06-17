@@ -22,18 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const nomeInput = document.getElementById('nome')
     const emailInput = document.getElementById('email')
     const tipoContaInput = document.getElementById('tipoConta')
+    const telefoneInput = document.querySelector("#telefone")
+    const cpfCnpjInput = document.querySelector("#cpfCnpj")
     const form = document.getElementById('perfil-form')
     const mensagem = document.getElementById('perfil-mensagem')
 
     nomeInput.value = usuario.nome || ''
     emailInput.value = usuario.email || ''
     tipoContaInput.value = usuario.empresa ? 'Empresa' : 'Candidato'
+    telefoneInput.value = usuario.telefone || ''
+    cpfCnpjInput.value = usuario.cpf_cnpj
 
     form.addEventListener('submit', event => {
         event.preventDefault()
 
         const nome = nomeInput.value.trim()
         const email = emailInput.value.trim()
+        const telefone = telefoneInput.value
 
         if (!nome || !email) {
             alert('Preencha nome e e-mail para atualizar seu perfil.')
@@ -41,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const emailEmUso = db.usuarios.some((u, index) => index !== usuarioIndex && u.email === email)
+
         if (emailEmUso) {
             alert('Este e-mail já está em uso por outro usuário.')
             return
@@ -48,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         db.usuarios[usuarioIndex].nome = nome
         db.usuarios[usuarioIndex].email = email
+        db.usuarios[usuarioIndex].telefone = telefone
 
         localStorage.setItem('db_usuarios', JSON.stringify(db))
 
@@ -55,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             id: usuario.id,
             nome: nome,
             email: email,
-            empresa: usuario.empresa
+            empresa: usuario.empresa,
+            telefone: telefone
         }
 
         sessionStorage.setItem('usuarioCorrente', JSON.stringify(usuarioAtualizado))

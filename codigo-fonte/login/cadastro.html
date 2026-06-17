@@ -36,23 +36,35 @@
                     <form action="" id="cadastro-form">
                         <div class="input-wrapper">
                             <label for="inputNome">Nome completo</label>
-                            <input type="text" id="inputNome" placeholder="Seu nome completo">
+                            <input type="text" id="inputNome" placeholder="Seu nome completo" required>
                         </div>
                         <div class="input-wrapper">
                             <label for="inputEmailCad">Email</label>
-                            <input type="email" id="inputEmailCad" placeholder="Seu@mail.com">
+                            <input type="email" id="inputEmailCad" placeholder="Seu@mail.com" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="inputTelefoneCad">Telefone</label>
+                            <input type="email" id="inputTelefoneCad" placeholder="31 99999 9999" required>
                         </div>
                         <div class="input-wrapper">
                             <label for="inputSenhaCad">Senha</label>
-                            <input type="password" id="inputSenhaCad" placeholder="Mínimo 4 caracteres">
+                            <input type="password" id="inputSenhaCad" placeholder="Mínimo 4 caracteres" required>
                         </div>
                         <div class="input-wrapper">
                             <label for="inputConfirmaSenha">Confirmar senha</label>
-                            <input type="password" id="inputConfirmaSenha" placeholder="Repita a senha">
+                            <input type="password" id="inputConfirmaSenha" placeholder="Repita a senha" required>
                         </div>
                         <div class="checkbox-wrapper">
                             <input type="checkbox" name="usuario_empresa" id="inputEmpresa">
-                            <label for="inputConfirmaSenha">Usuário Empresa?</label>
+                            <label for="inputConfirmaTipoUsuario">Usuário Empresa?</label>
+                        </div>
+                        <div class="input-wrapper divCNPJ">
+                            <label for="inputCNPJ">CNPJ</label>
+                            <input type="text" name="input_cnpj" id="inputCNPJ" maxlength="14" placeholder="01234567891235">
+                        </div>
+                        <div class="input-wrapper divCPF">
+                            <label>CPF</label>
+                            <input type="text" name="input_cpf" id="inputCPF" maxlength="11" placeholder="12345678923" required>
                         </div>
                         <button type="submit">Cadastrar</button>
                         <div class="form-footer">
